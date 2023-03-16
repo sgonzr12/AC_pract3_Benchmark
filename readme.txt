@@ -1,7 +1,7 @@
 opciones primer algoritmo: 
-	factorial 
-	elevar al cuadrado
-	elevar al siguiente número
+	elevar a un numero 
+	filtro blanco y negro
+	
 	
 
 #include<qimage.h>

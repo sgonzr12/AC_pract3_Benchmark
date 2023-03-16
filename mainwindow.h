@@ -2,6 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <iostream>
+#include <QMessageBox>
+
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +20,24 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+
+    void on_srcFileBtn_clicked();
+
+    void on_destFileBtn_clicked();
+
+    void on_srcDirBtn_clicked();
+
+    void on_destDirBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    QString srcFile;
+    QString destFile;
+
+    QString srcDir;
+    QString destDir;
+
 };
 #endif // MAINWINDOW_H
