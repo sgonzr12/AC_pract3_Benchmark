@@ -5,6 +5,9 @@
 #include <QFileDialog>
 #include <iostream>
 #include <QMessageBox>
+#include <QImage>
+#include <QElapsedTimer>
+#include <QVBoxLayout>
 
 using namespace std;
 
@@ -20,6 +23,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void fltroImagen(QString srcDir, QString destDir);
+
 private slots:
 
     void on_srcFileBtn_clicked();
@@ -29,6 +34,8 @@ private slots:
     void on_srcDirBtn_clicked();
 
     void on_destDirBtn_clicked();
+
+    void on_execImageBtn_clicked();
 
 private:
     Ui::MainWindow *ui;
