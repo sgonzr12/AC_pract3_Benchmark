@@ -84,22 +84,22 @@ void MainWindow::fltroImagen(QString srcDir, QString destDir){
             }
         }
 
+        //prueba de funcionamiento
+
+//        QLabel *imageLabel = new QLabel();
+//        imageLabel->setPixmap(QPixmap::fromImage(image));
+
+//        QDialog *dialog = new QDialog();
+//        QVBoxLayout *layout = new QVBoxLayout(dialog);
+//        layout->addWidget(imageLabel);
+//        dialog->setLayout(layout);
+
+//        dialog->show();
 
 
-        QLabel *imageLabel = new QLabel();
-        imageLabel->setPixmap(QPixmap::fromImage(image));
-
-        QDialog *dialog = new QDialog();
-        QVBoxLayout *layout = new QVBoxLayout(dialog);
-        layout->addWidget(imageLabel);
-        dialog->setLayout(layout);
-
-        dialog->show();
 
 
-
-
-        QString dest = destDir + QString::number(i);
+        QString dest = destDir + "/" + QString::number(i) + ".png";
         image.save(dest);
         i++;
     }
