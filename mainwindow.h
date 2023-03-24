@@ -8,6 +8,10 @@
 #include <QImage>
 #include <QElapsedTimer>
 #include <QVBoxLayout>
+#include <fstream>
+#include <string>
+#include <math.h>
+#include <QTextStream>
 
 using namespace std;
 
@@ -25,6 +29,8 @@ public:
 
     void fltroImagen(QString srcDir, QString destDir);
 
+    void elevador(QString srcFile, QString destFile);
+
 private slots:
 
     void on_srcFileBtn_clicked();
@@ -36,6 +42,8 @@ private slots:
     void on_destDirBtn_clicked();
 
     void on_execImageBtn_clicked();
+
+    void on_execDataBtn_clicked();
 
 private:
     Ui::MainWindow *ui;

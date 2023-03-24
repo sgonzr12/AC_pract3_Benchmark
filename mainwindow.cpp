@@ -26,7 +26,7 @@ void MainWindow::on_srcFileBtn_clicked()
 
 void MainWindow::on_destFileBtn_clicked()
 {
-    destFile = QFileDialog::getOpenFileName();
+    destFile = QFileDialog::getSaveFileName(nullptr, "Guardar archivo", QDir::homePath(), "Archivos de texto (*.txt)");
 }
 
 
@@ -115,7 +115,7 @@ void MainWindow::on_execImageBtn_clicked()
         double time = timer.elapsed();
         totalTime += time;
 
-        QString text = QString("execution %1 time %2\n").arg(i).arg(time);
+        QString text = QString("execution %1 time %2 ms\n").arg(i).arg(time);
 
         ui->textEdit_Image->append(text);
 
@@ -123,8 +123,68 @@ void MainWindow::on_execImageBtn_clicked()
 
     double avgTime = totalTime/5;
 
-    QString text = QString("average time %1\n").arg(avgTime);
+    QString text = QString("average time %1 ms\n").arg(avgTime);
 
     ui->textEdit_Image->append(text);
 }
 
+void MainWindow::elevador(QString srcFile, QString destFile){
+
+
+    string nombreArchivo = srcFile.toStdString();
+
+    QFile destino(destFile);
+
+    ifstream archivo(nombreArchivo);
+
+    if(archivo.is_open()){
+        string linea;
+        if(destino.open(QIODevice::WriteOnly | QIODevice::Text)){
+
+            while(getline(archivo,linea)){
+                int dato=stoi(linea);
+                int cuadrado=pow(dato,2);
+
+                    QTextStream salida(&destino);
+                    salida << cuadrado;
+                    salida <<"\n";
+
+            }
+            destino.close();
+        }
+        archivo.close();
+
+
+    }
+
+
+
+
+
+
+
+}
+void MainWindow::on_execDataBtn_clicked() //EJECUTAR ALGORITMO TXT AL CUADRADO
+{
+    double totalTime = 0;
+
+    for(int i = 1; i <= 5; i++){
+        QElapsedTimer timer;
+        timer.start();
+        elevador(srcFile,destFile);
+        //metodo al cuadrado
+        double time = timer.elapsed();
+        totalTime += time;
+
+        QString text = QString("execution %1 time %2 ms\n").arg(i).arg(time);
+
+        ui->textEdit_Data->append(text);
+
+    }
+
+    double avgTime = totalTime/5;
+
+    QString text = QString("average time %1 ms\n").arg(avgTime);
+
+    ui->textEdit_Data->append(text);
+}
